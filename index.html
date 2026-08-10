@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flora Connect | Mobile RFQ Flow</title>
+    <title>Flora Connect | Executive Proposal & Interactive RFQ Prototype</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -11,196 +11,555 @@
             theme: {
                 extend: {
                     colors: {
-                        flora: { 500: '#10b981', dark: '#020617' }
+                        flora: {
+                            50: '#f0fdf4',
+                            500: '#10b981',
+                            600: '#059669',
+                             dark: '#020617'
+                        }
                     }
                 }
             }
         }
     </script>
+    <style>
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans antialiased min-h-screen p-8">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
 
-    <div class="max-w-7xl mx-auto">
-        <div class="mb-10 text-center">
-            <h1 class="text-3xl font-bold text-white mb-2">Flora Connect App Flow</h1>
-            <p class="text-slate-400">Client RFQ Journey for CCTV Installation</p>
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                    <i class="fa-solid fa-shapes text-slate-950 text-xl font-bold"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">FLORA CONNECT</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+                <a href="#vision" class="hover:text-emerald-400 transition-colors">Vision</a>
+                <a href="#market" class="hover:text-emerald-400 transition-colors">Market</a>
+                <a href="#demo" class="hover:text-emerald-400 transition-colors text-emerald-400 font-semibold flex items-center gap-1.5"><i class="fa-solid fa-play text-xs"></i> Live App Demo</a>
+                <a href="#services" class="hover:text-emerald-400 transition-colors">Core Services</a>
+                <a href="#architecture" class="hover:text-emerald-400 transition-colors">Architecture</a>
+            </nav>
+            <a href="#demo" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all shadow-md hover:shadow-emerald-500/25">
+                Try Prototype
+            </a>
         </div>
+    </header>
 
-        <!-- Horizontal scrolling container for mobile screens -->
-        <div class="flex overflow-x-auto gap-8 pb-10 snap-x snap-mandatory hide-scrollbar">
-
-            <!-- Screen 1: Home / Service Selection -->
-            <div class="snap-center shrink-0 w-[320px] h-[650px] bg-slate-950 border-[6px] border-slate-800 rounded-[2.5rem] relative overflow-hidden shadow-2xl flex flex-col">
-                <!-- Notch -->
-                <div class="absolute top-0 inset-x-0 h-6 bg-slate-800 rounded-b-xl w-32 mx-auto z-20"></div>
-                
-                <div class="p-6 pt-12 flex-1 overflow-y-auto">
-                    <div class="flex items-center gap-2 mb-8">
-                        <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-950">
-                            <i class="fa-solid fa-shapes text-sm"></i>
-                        </div>
-                        <span class="font-bold text-lg tracking-tight">Flora</span>
-                    </div>
-                    
-                    <h2 class="text-2xl font-bold mb-2">Hello, Client</h2>
-                    <p class="text-slate-400 text-sm mb-6">Select a service to request a quote.</p>
-                    
-                    <div class="space-y-4">
-                        <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl hover:border-cyan-500/50 cursor-pointer transition-all">
-                            <i class="fa-solid fa-microchip text-cyan-400 text-2xl mb-3"></i>
-                            <h3 class="font-semibold text-white">Flora Technology</h3>
-                            <p class="text-xs text-slate-400 mt-1">POS, Queue Systems, IT</p>
-                        </div>
-                        <!-- User Clicks Security -->
-                        <div class="bg-emerald-500/10 border border-emerald-500 text-emerald-400 p-5 rounded-2xl cursor-pointer shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-                            <i class="fa-solid fa-shield-halved text-2xl mb-3"></i>
-                            <h3 class="font-semibold text-white">Flora Security</h3>
-                            <p class="text-xs text-emerald-400/80 mt-1">CCTV, Alarms, Access</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Nav Bar -->
-                <div class="h-16 border-t border-slate-800 bg-slate-950 flex justify-around items-center text-slate-500 px-4">
-                    <i class="fa-solid fa-house text-emerald-500"></i>
-                    <i class="fa-solid fa-file-invoice"></i>
-                    <i class="fa-solid fa-user"></i>
-                </div>
+    <!-- Hero Section -->
+    <section id="vision" class="relative pt-20 pb-16 border-b border-slate-800/80">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(16,185,129,0.08),transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-6">
+                <i class="fa-solid fa-sparkles"></i> Strategic Executive Proposal
             </div>
-
-            <!-- Screen 2: Choose Security Service -->
-            <div class="snap-center shrink-0 w-[320px] h-[650px] bg-slate-950 border-[6px] border-slate-800 rounded-[2.5rem] relative overflow-hidden shadow-2xl flex flex-col">
-                <div class="absolute top-0 inset-x-0 h-6 bg-slate-800 rounded-b-xl w-32 mx-auto z-20"></div>
-                
-                <div class="p-6 pt-12 flex-1">
-                    <div class="flex items-center gap-4 mb-6">
-                        <i class="fa-solid fa-arrow-left text-slate-400"></i>
-                        <h2 class="text-lg font-bold">Flora Security</h2>
-                    </div>
-                    
-                    <p class="text-slate-400 text-sm mb-4">What type of security system do you need?</p>
-                    
-                    <div class="space-y-3">
-                        <!-- User Clicks CCTV -->
-                        <div class="bg-emerald-500 p-4 rounded-xl flex items-center justify-between text-slate-950 shadow-lg shadow-emerald-500/20">
-                            <div class="flex items-center gap-3 font-semibold">
-                                <i class="fa-solid fa-video"></i> CCTV Systems
-                            </div>
-                            <i class="fa-solid fa-chevron-right text-sm"></i>
-                        </div>
-                        
-                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-center justify-between">
-                            <div class="flex items-center gap-3 text-slate-300">
-                                <i class="fa-solid fa-fingerprint"></i> Access Control
-                            </div>
-                            <i class="fa-solid fa-chevron-right text-slate-600 text-sm"></i>
-                        </div>
-                        
-                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-center justify-between">
-                            <div class="flex items-center gap-3 text-slate-300">
-                                <i class="fa-solid fa-bell"></i> Intrusion Alarms
-                            </div>
-                            <i class="fa-solid fa-chevron-right text-slate-600 text-sm"></i>
-                        </div>
-                    </div>
-                </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight">
+                Digitizing On-Demand Tech & Security RFQs in Qatar
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-normal">
+                Connecting clients directly to Flora Group’s MOI-certified security, infrastructure, and IT solutions through a dynamic multi-step RFQ submission pipeline[cite: 1].
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <a href="#demo" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold px-8 py-3 rounded-xl shadow-lg shadow-emerald-500/20 transition-all flex items-center gap-2">
+                    Test Live App Prototype <i class="fa-solid fa-arrow-down text-sm"></i>
+                </a>
             </div>
-
-            <!-- Screen 3: RFQ Questionnaire (Part 1) -->
-            <div class="snap-center shrink-0 w-[320px] h-[650px] bg-slate-950 border-[6px] border-slate-800 rounded-[2.5rem] relative overflow-hidden shadow-2xl flex flex-col">
-                <div class="absolute top-0 inset-x-0 h-6 bg-slate-800 rounded-b-xl w-32 mx-auto z-20"></div>
-                
-                <div class="p-6 pt-12 flex-1 overflow-y-auto">
-                    <div class="flex items-center gap-4 mb-6">
-                        <i class="fa-solid fa-arrow-left text-slate-400"></i>
-                        <h2 class="text-lg font-bold">CCTV Details</h2>
-                    </div>
-                    
-                    <!-- Progress Bar -->
-                    <div class="w-full bg-slate-800 h-1.5 rounded-full mb-6">
-                        <div class="bg-emerald-500 h-1.5 rounded-full w-1/2"></div>
-                    </div>
-
-                    <div class="mb-6">
-                        <label class="block text-sm font-semibold text-white mb-3">1. Select Building Type</label>
-                        <div class="grid grid-cols-2 gap-2 text-sm">
-                            <div class="border border-emerald-500 bg-emerald-500/10 text-emerald-400 py-2 rounded-lg text-center font-medium">Company</div>
-                            <div class="border border-slate-700 bg-slate-800/50 py-2 rounded-lg text-center text-slate-300">Villa</div>
-                            <div class="border border-slate-700 bg-slate-800/50 py-2 rounded-lg text-center text-slate-300">Shop</div>
-                            <div class="border border-slate-700 bg-slate-800/50 py-2 rounded-lg text-center text-slate-300">Supermarket</div>
-                            <div class="border border-slate-700 bg-slate-800/50 py-2 rounded-lg text-center text-slate-300">Industrial</div>
-                            <div class="border border-slate-700 bg-slate-800/50 py-2 rounded-lg text-center text-slate-300">Government</div>
-                            <div class="border border-slate-700 bg-slate-800/50 py-2 rounded-lg text-center text-slate-300 col-span-2">Private Property</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="p-4 border-t border-slate-800 bg-slate-950">
-                    <button class="w-full bg-emerald-500 text-slate-950 font-bold py-3 rounded-xl">Next Step</button>
-                </div>
-            </div>
-
-            <!-- Screen 4: RFQ Questionnaire (Part 2) -->
-            <div class="snap-center shrink-0 w-[320px] h-[650px] bg-slate-950 border-[6px] border-slate-800 rounded-[2.5rem] relative overflow-hidden shadow-2xl flex flex-col">
-                <div class="absolute top-0 inset-x-0 h-6 bg-slate-800 rounded-b-xl w-32 mx-auto z-20"></div>
-                
-                <div class="p-6 pt-12 flex-1 overflow-y-auto">
-                    <div class="flex items-center gap-4 mb-6">
-                        <i class="fa-solid fa-arrow-left text-slate-400"></i>
-                        <h2 class="text-lg font-bold">CCTV Details</h2>
-                    </div>
-                    
-                    <!-- Progress Bar -->
-                    <div class="w-full bg-slate-800 h-1.5 rounded-full mb-6">
-                        <div class="bg-emerald-500 h-1.5 rounded-full w-full"></div>
-                    </div>
-
-                    <div class="mb-6">
-                        <label class="block text-sm font-semibold text-white mb-3">2. MOI Qatar Approval Required?</label>
-                        <div class="flex gap-2">
-                            <div class="flex-1 border border-emerald-500 bg-emerald-500/10 text-emerald-400 py-2 rounded-lg text-center font-medium">Yes</div>
-                            <div class="flex-1 border border-slate-700 bg-slate-800/50 py-2 rounded-lg text-center text-slate-300">No</div>
-                        </div>
-                    </div>
-
-                    <div class="mb-6">
-                        <label class="block text-sm font-semibold text-white mb-3">3. Upload Drawings / Floor Plan</label>
-                        <div class="border-2 border-dashed border-slate-700 bg-slate-800/30 rounded-xl p-6 text-center">
-                            <i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-400 mb-2"></i>
-                            <p class="text-xs text-slate-400">Tap to upload PDF, JPG, or AutoCAD files</p>
-                            <div class="mt-3 bg-slate-800 text-xs py-1 px-3 rounded-full inline-block text-slate-300 border border-slate-700">
-                                <i class="fa-solid fa-file-pdf text-red-400 mr-1"></i> company_floorplan.pdf
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="p-4 border-t border-slate-800 bg-slate-950">
-                    <button class="w-full bg-emerald-500 text-slate-950 font-bold py-3 rounded-xl shadow-[0_0_15px_rgba(16,185,129,0.3)]">Submit RFQ</button>
-                </div>
-            </div>
-
-            <!-- Screen 5: Success & Backend Trigger -->
-            <div class="snap-center shrink-0 w-[320px] h-[650px] bg-emerald-500 border-[6px] border-slate-800 rounded-[2.5rem] relative overflow-hidden shadow-2xl flex flex-col text-slate-950 items-center justify-center text-center px-6">
-                <div class="absolute top-0 inset-x-0 h-6 bg-slate-800 rounded-b-xl w-32 mx-auto z-20"></div>
-                
-                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-6 shadow-xl">
-                    <i class="fa-solid fa-check text-4xl text-emerald-500"></i>
-                </div>
-                
-                <h2 class="text-2xl font-bold mb-2">RFQ Submitted!</h2>
-                <p class="text-sm font-medium opacity-90 mb-8">We have received your request for a Company CCTV system.</p>
-                
-                <div class="bg-emerald-600/30 w-full p-4 rounded-xl text-left text-xs font-semibold space-y-3 border border-emerald-400/30 backdrop-blur-sm">
-                    <p class="opacity-70 uppercase tracking-wider text-[10px]">Automated Actions Triggered:</p>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-database w-4"></i> Logged to GitHub CRM</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-clipboard-list w-4"></i> Checklist sent to Technician</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-envelope w-4"></i> Parts email dispatched</div>
-                </div>
-
-                <button class="mt-10 bg-slate-950 text-white w-full py-3 rounded-xl font-bold">Return to Home</button>
-            </div>
-
         </div>
-    </div>
+    </section>
+
+    <!-- Market Advantage Grid -->
+    <section id="market" class="py-16 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold tracking-tight text-white">Backed by 33+ Years of Market Leadership</h2>
+                <p class="text-slate-400 mt-2">Leveraging Flora Group’s existing operational foundation for instant client adoption</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
+                    <div class="text-4xl font-extrabold text-emerald-400 mb-2">33+ Years</div>
+                    <div class="text-lg font-semibold text-slate-200">Established Reputation</div>
+                    <p class="text-slate-400 text-sm mt-2">A trusted leader across Qatari business sectors with deep institutional domain knowledge[cite: 1].</p>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
+                    <div class="text-4xl font-extrabold text-cyan-400 mb-2">600+</div>
+                    <div class="text-lg font-semibold text-slate-200">Corporate Clients</div>
+                    <p class="text-slate-400 text-sm mt-2">An existing corporate base ready for immediate digital onboarding and self-service RFQs[cite: 1].</p>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl">
+                    <div class="text-4xl font-extrabold text-emerald-400 mb-2">85%</div>
+                    <div class="text-lg font-semibold text-slate-200">CX Market Share</div>
+                    <p class="text-slate-400 text-sm mt-2">Leading customer experience management in Qatar—digitizing RFQs elevates service speed[cite: 1].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DYNAMIC INTERACTIVE APP DEMO SECTION -->
+    <section id="demo" class="py-20 border-t border-slate-800 relative bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Interactive Prototype</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Experience the Client RFQ Journey</h2>
+                <p class="text-slate-400 mt-2 max-w-xl mx-auto">Click through the simulated phone screen below to test the dynamic questionnaire and observe how backend systems react in real-time.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Side: Real-time System Workflow Logs -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                        <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-sliders text-emerald-400"></i> Selected Quote Specs
+                        </h3>
+                        <p class="text-xs text-slate-400 mb-4">Live parameters captured from client mobile input:</p>
+                        
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between py-2 border-b border-slate-800">
+                                <span class="text-slate-400">Service Pillar:</span>
+                                <span id="summary-pillar" class="font-semibold text-slate-200">Not Selected</span>
+                            </div>
+                            <div class="flex justify-between py-2 border-b border-slate-800">
+                                <span class="text-slate-400">Sub-Category:</span>
+                                <span id="summary-category" class="font-semibold text-slate-200">--</span>
+                            </div>
+                            <div class="flex justify-between py-2 border-b border-slate-800">
+                                <span class="text-slate-400">Building Type:</span>
+                                <span id="summary-building" class="font-semibold text-slate-200">--</span>
+                            </div>
+                            <div class="flex justify-between py-2 border-b border-slate-800">
+                                <span class="text-slate-400">MOI Qatar Compliance:</span>
+                                <span id="summary-moi" class="font-semibold text-slate-200">--</span>
+                            </div>
+                            <div class="flex justify-between py-2">
+                                <span class="text-slate-400">Floor Plan Drawings:</span>
+                                <span id="summary-plan" class="font-semibold text-slate-200">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+                        <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-microchip text-cyan-400"></i> Backend Automated Triggers
+                        </h3>
+                        <div class="space-y-3 text-xs">
+                            <div id="trigger-crm" class="flex items-start gap-3 text-slate-500">
+                                <i class="fa-solid fa-circle-check mt-0.5"></i>
+                                <div>
+                                    <p class="font-semibold text-slate-300">GitHub CRM Record Generation</p>
+                                    <p class="text-[11px] text-slate-500">Logs full request payload to CRM repo upon submission</p>
+                                </div>
+                            </div>
+                            <div id="trigger-survey" class="flex items-start gap-3 text-slate-500">
+                                <i class="fa-solid fa-circle-check mt-0.5"></i>
+                                <div>
+                                    <p class="font-semibold text-slate-300">Site Survey Checklist Auto-Populated</p>
+                                    <p class="text-[11px] text-slate-500">Prepares CCTV technician survey tasks based on building type</p>
+                                </div>
+                            </div>
+                            <div id="trigger-email" class="flex items-start gap-3 text-slate-500">
+                                <i class="fa-solid fa-circle-check mt-0.5"></i>
+                                <div>
+                                    <p class="font-semibold text-slate-300">Apps Script Inventory Requisition</p>
+                                    <p class="text-[11px] text-slate-500">Triggers automatic email dispatch to warehouse for stock check</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Interactive CSS Mobile Phone Prototype -->
+                <div class="lg:col-span-7 flex justify-center">
+                    <div class="w-[350px] h-[700px] bg-slate-950 border-[8px] border-slate-800 rounded-[3rem] shadow-2xl relative overflow-hidden flex flex-col ring-1 ring-slate-700/50">
+                        
+                        <!-- Phone Speaker Notch -->
+                        <div class="absolute top-0 inset-x-0 h-6 bg-slate-800 rounded-b-xl w-36 mx-auto z-30 flex items-center justify-center">
+                            <div class="w-12 h-1 bg-slate-700 rounded-full"></div>
+                        </div>
+
+                        <!-- App Header / Status Bar -->
+                        <div class="pt-8 px-6 pb-3 border-b border-slate-800/80 bg-slate-950 flex items-center justify-between z-20">
+                            <div class="flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-950 text-xs">
+                                    <i class="fa-solid fa-shapes font-bold"></i>
+                                </div>
+                                <span class="font-bold text-sm tracking-tight">Flora Connect</span>
+                            </div>
+                            <button onclick="resetDemo()" class="text-[10px] bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded transition-all">
+                                <i class="fa-solid fa-rotate-right mr-1"></i>Reset
+                            </button>
+                        </div>
+
+                        <!-- DYNAMIC APP SCREEN CONTAINER -->
+                        <div class="flex-1 p-5 overflow-y-auto relative hide-scrollbar">
+
+                            <!-- STEP 1: Select Core Pillar -->
+                            <div id="app-step-1" class="space-y-4">
+                                <div>
+                                    <p class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Step 1 of 4</p>
+                                    <h3 class="text-xl font-bold text-white mt-1">Select Service</h3>
+                                    <p class="text-slate-400 text-xs mt-1">Which division can we assist you with today?</p>
+                                </div>
+
+                                <div class="space-y-3 pt-2">
+                                    <button onclick="selectPillar('Flora Technology')" class="w-full text-left bg-slate-900 border border-slate-800 hover:border-cyan-500/50 p-4 rounded-xl transition-all group">
+                                        <div class="flex items-center justify-between">
+                                            <i class="fa-solid fa-microchip text-cyan-400 text-xl group-hover:scale-110 transition-transform"></i>
+                                            <i class="fa-solid fa-chevron-right text-xs text-slate-600"></i>
+                                        </div>
+                                        <h4 class="font-semibold text-white mt-3 text-sm">Flora Technology</h4>
+                                        <p class="text-xs text-slate-400 mt-1">POS, Queue Management, IT Infrastructure[cite: 1]</p>
+                                    </button>
+
+                                    <button onclick="selectPillar('Flora Security')" class="w-full text-left bg-slate-900 border border-slate-800 hover:border-emerald-500 p-4 rounded-xl transition-all group hover:bg-emerald-500/5">
+                                        <div class="flex items-center justify-between">
+                                            <i class="fa-solid fa-shield-halved text-emerald-400 text-xl group-hover:scale-110 transition-transform"></i>
+                                            <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">MOI Qatar Certified[cite: 1]</span>
+                                        </div>
+                                        <h4 class="font-semibold text-white mt-3 text-sm">Flora Security</h4>
+                                        <p class="text-xs text-slate-400 mt-1">CCTV, Access Control & Intrusion Systems[cite: 1]</p>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- STEP 2: Select Sub-Category -->
+                            <div id="app-step-2" class="space-y-4 hidden">
+                                <div class="flex items-center gap-3">
+                                    <button onclick="goToStep(1)" class="text-slate-400 hover:text-white"><i class="fa-solid fa-arrow-left text-sm"></i></button>
+                                    <div>
+                                        <p class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Step 2 of 4</p>
+                                        <h3 class="text-lg font-bold text-white" id="step2-title">Select Security System</h3>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-2.5 pt-2" id="sub-category-list">
+                                    <!-- Populated dynamically via JS -->
+                                </div>
+                            </div>
+
+                            <!-- STEP 3: CCTV Building Type -->
+                            <div id="app-step-3" class="space-y-4 hidden">
+                                <div class="flex items-center gap-3">
+                                    <button onclick="goToStep(2)" class="text-slate-400 hover:text-white"><i class="fa-solid fa-arrow-left text-sm"></i></button>
+                                    <div>
+                                        <p class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Step 3 of 4</p>
+                                        <h3 class="text-lg font-bold text-white">Building Type</h3>
+                                    </div>
+                                </div>
+
+                                <p class="text-xs text-slate-400">Specify the target installation location:</p>
+
+                                <div class="grid grid-cols-2 gap-2 text-xs" id="building-grid">
+                                    <button onclick="selectBuilding('Villa')" class="building-btn border border-slate-800 bg-slate-900 p-3 rounded-xl text-left hover:border-emerald-500 transition-all">
+                                        <i class="fa-solid fa-house text-emerald-400 mb-1 block"></i> Villa
+                                    </button>
+                                    <button onclick="selectBuilding('Shop')" class="building-btn border border-slate-800 bg-slate-900 p-3 rounded-xl text-left hover:border-emerald-500 transition-all">
+                                        <i class="fa-solid fa-store text-emerald-400 mb-1 block"></i> Shop
+                                    </button>
+                                    <button onclick="selectBuilding('Supermarket')" class="building-btn border border-slate-800 bg-slate-900 p-3 rounded-xl text-left hover:border-emerald-500 transition-all">
+                                        <i class="fa-solid fa-cart-shopping text-emerald-400 mb-1 block"></i> Supermarket
+                                    </button>
+                                    <button onclick="selectBuilding('Company')" class="building-btn border border-slate-800 bg-slate-900 p-3 rounded-xl text-left hover:border-emerald-500 transition-all">
+                                        <i class="fa-solid fa-building text-emerald-400 mb-1 block"></i> Company
+                                    </button>
+                                    <button onclick="selectBuilding('Industrial')" class="building-btn border border-slate-800 bg-slate-900 p-3 rounded-xl text-left hover:border-emerald-500 transition-all">
+                                        <i class="fa-solid fa-industry text-emerald-400 mb-1 block"></i> Industrial
+                                    </button>
+                                    <button onclick="selectBuilding('Government')" class="building-btn border border-slate-800 bg-slate-900 p-3 rounded-xl text-left hover:border-emerald-500 transition-all">
+                                        <i class="fa-solid fa-landmark text-emerald-400 mb-1 block"></i> Government
+                                    </button>
+                                    <button onclick="selectBuilding('Private Property')" class="building-btn border border-slate-800 bg-slate-900 p-3 rounded-xl text-left hover:border-emerald-500 transition-all col-span-2">
+                                        <i class="fa-solid fa-user-shield text-emerald-400 mb-1 block"></i> Private Property
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- STEP 4: MOI & Floor Plan Drawings -->
+                            <div id="app-step-4" class="space-y-4 hidden">
+                                <div class="flex items-center gap-3">
+                                    <button onclick="goToStep(3)" class="text-slate-400 hover:text-white"><i class="fa-solid fa-arrow-left text-sm"></i></button>
+                                    <div>
+                                        <p class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Step 4 of 4</p>
+                                        <h3 class="text-lg font-bold text-white">Regulations & Plans</h3>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-200 mb-2">Requires MOI Approval (Qatar)?</label>
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <button id="moi-yes" onclick="setMoi(true)" class="border border-slate-800 bg-slate-900 py-2.5 rounded-xl text-xs font-semibold hover:border-emerald-500 transition-all">Yes, Required</button>
+                                            <button id="moi-no" onclick="setMoi(false)" class="border border-slate-800 bg-slate-900 py-2.5 rounded-xl text-xs font-semibold hover:border-emerald-500 transition-all">Not Required</button>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-200 mb-2">Architectural Drawings / Floor Plan</label>
+                                        <div onclick="toggleFloorPlanUpload()" class="border-2 border-dashed border-slate-800 hover:border-emerald-500/50 bg-slate-900/50 rounded-xl p-4 text-center cursor-pointer transition-all">
+                                            <i id="upload-icon" class="fa-solid fa-cloud-arrow-up text-xl text-slate-500 mb-1"></i>
+                                            <p id="upload-text" class="text-[11px] text-slate-400">Click to attach AutoCAD, PDF or Layout Image</p>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="submitRFQ()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 rounded-xl text-xs shadow-lg shadow-emerald-500/20 transition-all mt-4">
+                                        Submit Quote Request <i class="fa-solid fa-paper-plane ml-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- STEP 5: Success & Trigger Display -->
+                            <div id="app-step-5" class="space-y-4 hidden text-center py-4">
+                                <div class="w-16 h-16 bg-emerald-500 text-slate-950 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/30 animate-bounce">
+                                    <i class="fa-solid fa-check text-2xl font-bold"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">RFQ Submitted!</h3>
+                                <p class="text-xs text-slate-400 px-2">Your request has been processed and routed to engineering.</p>
+
+                                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-left text-xs space-y-2 mt-4">
+                                    <p class="font-bold text-emerald-400 text-[10px] uppercase tracking-wider">Ticket #FL-2026-8891</p>
+                                    <div class="flex justify-between text-slate-300"><span>Status:</span><span class="text-emerald-400">Dispatched</span></div>
+                                    <div class="flex justify-between text-slate-300"><span>Target:</span><span id="confirm-building">--</span></div>
+                                </div>
+
+                                <button onclick="resetDemo()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 rounded-xl text-xs transition-all mt-4">
+                                    Start Another Quote
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <!-- Phone Bottom Bar -->
+                        <div class="h-12 border-t border-slate-800/80 bg-slate-950 flex justify-center items-center">
+                            <div class="w-28 h-1 bg-slate-700 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Pillars -->
+    <section id="services" class="py-20 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white">Integrated Business Pillars</h2>
+                <p class="text-slate-400 mt-2">On-demand service dispatch covering technological and security operations</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Flora Technology -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6">
+                        <i class="fa-solid fa-microchip text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Flora Technology</h3>
+                    <p class="text-slate-400 text-sm mb-6">Complete installation, implementation, repairing, and maintenance services[cite: 1]:</p>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> Queue Management Systems[cite: 1]</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> Point of Sale (POS) & Printing Systems[cite: 1]</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> IT Infrastructure & Network Solutions[cite: 1]</li>
+                    </ul>
+                </div>
+                <!-- Flora Security -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6">
+                        <i class="fa-solid fa-shield-halved text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Flora Security</h3>
+                    <p class="text-slate-400 text-sm mb-6">Official Ministry of Interior (MOI) certified security systems execution[cite: 1]:</p>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> MOI-Compliant CCTV Systems[cite: 1]</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Access Control & Biometric Locks[cite: 1]</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Intrusion Alarms & Auditing[cite: 1]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section id="architecture" class="py-20 bg-slate-900/30 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white">Full-Stack Dispatch Workflow</h2>
+                <p class="text-slate-400 mt-2">Connecting mobile user submissions with engineering operations</p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-6">
+                    <div class="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-2">01. Mobile Intake</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Interactive RFQ Engine</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Dynamic mobile questionnaires capture building type, regulatory requirements, and blueprint attachments in real-time.</p>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-6">
+                    <div class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">02. Engineering Prep</div>
+                    <h4 class="text-xl font-bold text-white mb-3">Technician Site Checklist</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Generates standardized CCTV site survey templates automatically tailored for technicians based on building specifications.</p>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-6">
+                    <div class="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-2">03. Automated Backend</div>
+                    <h4 class="text-xl font-bold text-white mb-3">GitHub CRM & Apps Script</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Logs ticket data into the GitHub-hosted CRM while executing Google Apps Script email dispatches for immediate stock allocation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-800 bg-slate-950 text-center text-xs text-slate-500">
+        <p>Flora Group • Executive Digital Transformation Proposal • Doha, Qatar</p>
+    </footer>
+
+    <!-- DYNAMIC PROTOTYPE JAVASCRIPT LOGIC -->
+    <script>
+        const state = {
+            pillar: null,
+            subCategory: null,
+            building: null,
+            moi: null,
+            hasFloorPlan: false
+        };
+
+        const subCategories = {
+            'Flora Security': [
+                { name: 'CCTV Systems', icon: 'fa-video', targetStep: 3 },
+                { name: 'Access Control', icon: 'fa-fingerprint', targetStep: 3 },
+                { name: 'Intrusion Alarms', icon: 'fa-bell', targetStep: 3 }
+            ],
+            'Flora Technology': [
+                { name: 'Queue Management', icon: 'fa-users-line', targetStep: 3 },
+                { name: 'POS & Hardware', icon: 'fa-cash-register', targetStep: 3 },
+                { name: 'IT Infrastructure', icon: 'fa-network-wired', targetStep: 3 }
+            ]
+        };
+
+        function goToStep(stepNumber) {
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`app-step-${i}`).classList.add('hidden');
+            }
+            document.getElementById(`app-step-${stepNumber}`).classList.remove('hidden');
+        }
+
+        function selectPillar(pillarName) {
+            state.pillar = pillarName;
+            document.getElementById('summary-pillar').innerText = pillarName;
+            document.getElementById('summary-pillar').className = "font-semibold text-emerald-400";
+            
+            // Populate Step 2
+            document.getElementById('step2-title').innerText = `${pillarName} Solutions`;
+            const listContainer = document.getElementById('sub-category-list');
+            listContainer.innerHTML = '';
+
+            subCategories[pillarName].forEach(sub => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left bg-slate-900 border border-slate-800 hover:border-emerald-500 p-3.5 rounded-xl transition-all flex items-center justify-between";
+                btn.onclick = () => selectSubCategory(sub.name);
+                btn.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid ${sub.icon} text-emerald-400 text-sm"></i>
+                        <span class="text-xs font-semibold text-white">${sub.name}</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-slate-600"></i>
+                `;
+                listContainer.appendChild(btn);
+            });
+
+            goToStep(2);
+        }
+
+        function selectSubCategory(subName) {
+            state.subCategory = subName;
+            document.getElementById('summary-category').innerText = subName;
+            document.getElementById('summary-category').className = "font-semibold text-emerald-400";
+            goToStep(3);
+        }
+
+        function selectBuilding(buildingType) {
+            state.building = buildingType;
+            document.getElementById('summary-building').innerText = buildingType;
+            document.getElementById('summary-building').className = "font-semibold text-emerald-400";
+
+            // Highlight selected button
+            document.querySelectorAll('.building-btn').forEach(btn => {
+                btn.classList.remove('border-emerald-500', 'bg-emerald-500/10');
+            });
+            event.currentTarget.classList.add('border-emerald-500', 'bg-emerald-500/10');
+
+            setTimeout(() => { goToStep(4); }, 200);
+        }
+
+        function setMoi(isRequired) {
+            state.moi = isRequired ? "Required (MOI Qatar)" : "Not Required";
+            document.getElementById('summary-moi').innerText = state.moi;
+            document.getElementById('summary-moi').className = "font-semibold text-emerald-400";
+
+            const yesBtn = document.getElementById('moi-yes');
+            const noBtn = document.getElementById('moi-no');
+
+            if (isRequired) {
+                yesBtn.className = "border border-emerald-500 bg-emerald-500/20 text-emerald-400 py-2.5 rounded-xl text-xs font-semibold";
+                noBtn.className = "border border-slate-800 bg-slate-900 py-2.5 rounded-xl text-xs font-semibold";
+            } else {
+                noBtn.className = "border border-emerald-500 bg-emerald-500/20 text-emerald-400 py-2.5 rounded-xl text-xs font-semibold";
+                yesBtn.className = "border border-slate-800 bg-slate-900 py-2.5 rounded-xl text-xs font-semibold";
+            }
+        }
+
+        function toggleFloorPlanUpload() {
+            state.hasFloorPlan = !state.hasFloorPlan;
+            const icon = document.getElementById('upload-icon');
+            const text = document.getElementById('upload-text');
+
+            if (state.hasFloorPlan) {
+                icon.className = "fa-solid fa-file-pdf text-xl text-emerald-400 mb-1";
+                text.innerHTML = "<span class='text-emerald-400 font-semibold'>building_layout_v1.pdf attached</span>";
+                document.getElementById('summary-plan').innerText = "Attached (PDF)";
+                document.getElementById('summary-plan').className = "font-semibold text-emerald-400";
+            } else {
+                icon.className = "fa-solid fa-cloud-arrow-up text-xl text-slate-500 mb-1";
+                text.innerText = "Click to attach AutoCAD, PDF or Layout Image";
+                document.getElementById('summary-plan').innerText = "--";
+                document.getElementById('summary-plan').className = "font-semibold text-slate-200";
+            }
+        }
+
+        function submitRFQ() {
+            goToStep(5);
+            document.getElementById('confirm-building').innerText = `${state.building || 'Facility'} (${state.subCategory || 'Service'})`;
+
+            // Activate trigger items on left dashboard panel
+            document.getElementById('trigger-crm').className = "flex items-start gap-3 text-emerald-400 transition-all";
+            document.getElementById('trigger-survey').className = "flex items-start gap-3 text-emerald-400 transition-all";
+            document.getElementById('trigger-email').className = "flex items-start gap-3 text-emerald-400 transition-all";
+        }
+
+        function resetDemo() {
+            state.pillar = null;
+            state.subCategory = null;
+            state.building = null;
+            state.moi = null;
+            state.hasFloorPlan = false;
+
+            document.getElementById('summary-pillar').innerText = "Not Selected";
+            document.getElementById('summary-pillar').className = "font-semibold text-slate-200";
+            document.getElementById('summary-category').innerText = "--";
+            document.getElementById('summary-category').className = "font-semibold text-slate-200";
+            document.getElementById('summary-building').innerText = "--";
+            document.getElementById('summary-building').className = "font-semibold text-slate-200";
+            document.getElementById('summary-moi').innerText = "--";
+            document.getElementById('summary-moi').className = "font-semibold text-slate-200";
+            document.getElementById('summary-plan').innerText = "--";
+            document.getElementById('summary-plan').className = "font-semibold text-slate-200";
+
+            document.getElementById('trigger-crm').className = "flex items-start gap-3 text-slate-500";
+            document.getElementById('trigger-survey').className = "flex items-start gap-3 text-slate-500";
+            document.getElementById('trigger-email').className = "flex items-start gap-3 text-slate-500";
+
+            goToStep(1);
+        }
+    </script>
 </body>
 </html>
